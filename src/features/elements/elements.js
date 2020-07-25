@@ -1,24 +1,36 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { selectElements } from './elements-slice';
+import Draggable from 'react-draggable';
+import { useSelector, useDispatch } from 'react-redux';
 import styles from './elements.module.css';
+import { selectElements, updatePosition } from './elements-slice';
 
 const Rectangle = (props) => {
   const { width, height, backgroundColor } = props;
-  return <div style={{ width, height, backgroundColor }} />;
+  return <div style={{ width, height, backgroundColor, color: 'red' }} />;
 };
 
 const DraggableRectangle = (props) => {
-  const { width, height, backgroundColor, x, y } = props;
+  const { id, width, height, backgroundColor, x, y } = props;
+  const nodeRef = React.useRef(null);
+  const dispatch = useDispatch();
 
   return (
-    <div className={styles['draggable-rectangle']} style={{ top: y, left: x }}>
-      <Rectangle
-        width={width}
-        height={height}
-        backgroundColor={backgroundColor}
-      />
-    </div>
+    <Draggable
+      bounds={'parent'}
+      defaultPosition={{ x, y }}
+      nodeRef={nodeRef}
+      onStop={(_, { node, x, y }) => {
+        dispatch(updatePosition({ id: Number(node.dataset.id), x, y }));
+      }}
+    >
+      <div className={styles['draggable-rectangle']} ref={nodeRef} data-id={id}>
+        <Rectangle
+          width={width}
+          height={height}
+          backgroundColor={backgroundColor}
+        />
+      </div>
+    </Draggable>
   );
 };
 

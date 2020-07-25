@@ -10,8 +10,9 @@ const generateColor = () => {
   const r = random(0, 255).toString(16);
   const g = random(0, 255).toString(16);
   const b = random(0, 255).toString(16);
+  const generatedColor = `#${r}${g}${b}`;
 
-  return `#${r}${g}${b}`;
+  return generatedColor === '#d8d8d8' ? generateColor() : generatedColor;
 };
 
 const initialPageState = {
@@ -53,7 +54,12 @@ const initialElementsState = [
     y: 200,
     backgroundColor: '#9E5FE4',
   },
-].concat(Array.from({ length: 1000 }, (_, i) => generateElement(i + 2)));
+].concat(
+  Array.from(
+    { length: process.env.NODE_ENV === 'production' ? 10000 : 100 },
+    (_, i) => generateElement(i + 2),
+  ),
+);
 
 export const store = configureStore({
   reducer: {
