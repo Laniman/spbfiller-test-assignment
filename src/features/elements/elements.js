@@ -4,24 +4,29 @@ import { useSelector, useDispatch } from 'react-redux';
 import styles from './elements.module.css';
 import { selectElements, updatePosition } from './elements-slice';
 
-const Rectangle = (props) => {
+const Rectangle = React.memo((props) => {
   const { width, height, backgroundColor } = props;
-  return <div style={{ width, height, backgroundColor, color: 'red' }} />;
-};
+  return <div style={{ width, height, backgroundColor }} />;
+});
 
-const DraggableRectangle = (props) => {
+const DraggableRectangle = React.memo((props) => {
   const { id, width, height, backgroundColor, x, y } = props;
   const nodeRef = React.useRef(null);
   const dispatch = useDispatch();
+
+  const handleDraggableStop = React.useCallback(
+    (_, { node, x, y }) => {
+      dispatch(updatePosition({ id: Number(node.dataset.id), x, y }));
+    },
+    [dispatch],
+  );
 
   return (
     <Draggable
       bounds={'parent'}
       defaultPosition={{ x, y }}
       nodeRef={nodeRef}
-      onStop={(_, { node, x, y }) => {
-        dispatch(updatePosition({ id: Number(node.dataset.id), x, y }));
-      }}
+      onStop={handleDraggableStop}
     >
       <div className={styles['draggable-rectangle']} ref={nodeRef} data-id={id}>
         <Rectangle
@@ -32,7 +37,7 @@ const DraggableRectangle = (props) => {
       </div>
     </Draggable>
   );
-};
+});
 
 export const Elements = () => {
   const elements = useSelector(selectElements);

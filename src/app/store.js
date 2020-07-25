@@ -6,12 +6,17 @@ const random = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
 };
 
-const generateColor = () => {
-  const r = random(0, 255).toString(16);
-  const g = random(0, 255).toString(16);
-  const b = random(0, 255).toString(16);
-  const generatedColor = `#${r}${g}${b}`;
+const pad = (num, size) => {
+  const s = '000000000' + num;
+  return s.substr(s.length - size);
+};
 
+const generateColor = () => {
+  const r = pad(random(0, 255).toString(16), 2);
+  const g = pad(random(0, 255).toString(16), 2);
+  const b = pad(random(0, 255).toString(16), 2);
+
+  const generatedColor = `#${r}${g}${b}`;
   return generatedColor === '#d8d8d8' ? generateColor() : generatedColor;
 };
 
@@ -54,12 +59,7 @@ const initialElementsState = [
     y: 200,
     backgroundColor: '#9E5FE4',
   },
-].concat(
-  Array.from(
-    { length: process.env.NODE_ENV === 'production' ? 10000 : 100 },
-    (_, i) => generateElement(i + 2),
-  ),
-);
+].concat(Array.from({ length: 4000 }, (_, i) => generateElement(i + 2)));
 
 export const store = configureStore({
   reducer: {
