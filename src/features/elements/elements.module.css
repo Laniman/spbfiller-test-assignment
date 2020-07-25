@@ -1,3 +1,23 @@
 .draggable-rectangle {
   position: absolute;
 }
+
+.form {
+  display: inline-flex;
+  max-width: 320px;
+  margin-top: 8px;
+  margin-left: 8px;
+}
+
+.form input {
+  flex: 1;
+}
+
+.form button {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.form > * + * {
+  margin-left: 8px;
+}

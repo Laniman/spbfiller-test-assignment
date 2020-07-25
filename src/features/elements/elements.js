@@ -9,25 +9,20 @@ const Rectangle = React.memo((props) => {
   return <div style={{ width, height, backgroundColor }} />;
 });
 
-const DraggableRectangle = React.memo((props) => {
-  const { id, width, height, backgroundColor, x, y } = props;
-  const nodeRef = React.useRef(null);
-  const dispatch = useDispatch();
+const DraggableRectangle = React.memo(
+  (props) => {
+    const { id, width, height, backgroundColor, x, y } = props;
+    const nodeRef = React.useRef(null);
+    const dispatch = useDispatch();
 
-  const handleDraggableStop = React.useCallback(
-    (_, { node, x, y }) => {
-      dispatch(updatePosition({ id: Number(node.dataset.id), x, y }));
-    },
-    [dispatch],
-  );
+    const handleDraggableStop = React.useCallback(
+      (_, { node, x, y }) => {
+        dispatch(updatePosition({ id: Number(node.dataset.id), x, y }));
+      },
+      [dispatch],
+    );
 
-  return (
-    <Draggable
-      bounds={'parent'}
-      defaultPosition={{ x, y }}
-      nodeRef={nodeRef}
-      onStop={handleDraggableStop}
-    >
+    const draggableChild = (
       <div className={styles['draggable-rectangle']} ref={nodeRef} data-id={id}>
         <Rectangle
           width={width}
@@ -35,9 +30,21 @@ const DraggableRectangle = React.memo((props) => {
           backgroundColor={backgroundColor}
         />
       </div>
-    </Draggable>
-  );
-});
+    );
+
+    return (
+      <Draggable
+        bounds={'parent'}
+        defaultPosition={{ x, y }}
+        nodeRef={nodeRef}
+        onStop={handleDraggableStop}
+      >
+        {draggableChild}
+      </Draggable>
+    );
+  },
+  () => true,
+);
 
 export const Elements = () => {
   const elements = useSelector(selectElements);

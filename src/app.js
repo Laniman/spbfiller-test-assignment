@@ -1,11 +1,14 @@
 import React from 'react';
 import { Page } from './features/page';
-import { Elements } from './features/elements';
+import { Elements, ElementsForm } from './features/elements';
 
 export function App() {
   return (
-    <Page>
-      <Elements />
-    </Page>
+    <>
+      <Page>
+        <Elements />
+      </Page>
+      <ElementsForm />
+    </>
   );
 }

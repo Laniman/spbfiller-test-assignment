@@ -1,2 +1,7 @@
 export { Elements } from './elements';
-export { elementsSlice, selectElements } from './elements-slice';
+export { ElementsForm } from './elements-form';
+export {
+  elementsSlice,
+  selectElements,
+  generateElement,
+} from './elements-slice';

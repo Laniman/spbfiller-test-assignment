@@ -1,4 +1,4 @@
 .page {
   position: relative;
-  background-color: #d8d8d8;
+  background-color: var(--page-bg-color);
 }
