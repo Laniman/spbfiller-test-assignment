@@ -34,6 +34,7 @@ const DraggableRectangle = React.memo(
 
     return (
       <Draggable
+        enableUserSelectHack={false}
         bounds={'parent'}
         defaultPosition={{ x, y }}
         nodeRef={nodeRef}
