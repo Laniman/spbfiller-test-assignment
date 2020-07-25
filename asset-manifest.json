@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/spbfiller-test-assignment/static/css/main.a45fab3d.chunk.css",
-    "main.js": "/spbfiller-test-assignment/static/js/main.b4f44867.chunk.js",
-    "main.js.map": "/spbfiller-test-assignment/static/js/main.b4f44867.chunk.js.map",
+    "main.js": "/spbfiller-test-assignment/static/js/main.b9fbc63d.chunk.js",
+    "main.js.map": "/spbfiller-test-assignment/static/js/main.b9fbc63d.chunk.js.map",
     "runtime-main.js": "/spbfiller-test-assignment/static/js/runtime-main.1a3793f4.js",
     "runtime-main.js.map": "/spbfiller-test-assignment/static/js/runtime-main.1a3793f4.js.map",
     "static/js/2.93f567bc.chunk.js": "/spbfiller-test-assignment/static/js/2.93f567bc.chunk.js",
     "static/js/2.93f567bc.chunk.js.map": "/spbfiller-test-assignment/static/js/2.93f567bc.chunk.js.map",
     "index.html": "/spbfiller-test-assignment/index.html",
-    "precache-manifest.18e06d0ac211b9f70fc7e0fd26e38a4e.js": "/spbfiller-test-assignment/precache-manifest.18e06d0ac211b9f70fc7e0fd26e38a4e.js",
+    "precache-manifest.d7dadb0e6a1e2f039feeb6a1b20fa52d.js": "/spbfiller-test-assignment/precache-manifest.d7dadb0e6a1e2f039feeb6a1b20fa52d.js",
     "service-worker.js": "/spbfiller-test-assignment/service-worker.js",
     "static/css/main.a45fab3d.chunk.css.map": "/spbfiller-test-assignment/static/css/main.a45fab3d.chunk.css.map",
     "static/js/2.93f567bc.chunk.js.LICENSE.txt": "/spbfiller-test-assignment/static/js/2.93f567bc.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.1a3793f4.js",
     "static/js/2.93f567bc.chunk.js",
     "static/css/main.a45fab3d.chunk.css",
-    "static/js/main.b4f44867.chunk.js"
+    "static/js/main.b9fbc63d.chunk.js"
   ]
 }
