@@ -2,7 +2,7 @@ import React from 'react';
 import Draggable from 'react-draggable';
 import { useSelector, useDispatch } from 'react-redux';
 import styles from './elements.module.css';
-import { selectElements, updatePosition } from './elements-slice';
+import { selectElements, updateElementPosition } from './elements-slice';
 
 const Rectangle = React.memo((props) => {
   const { width, height, backgroundColor } = props;
@@ -17,7 +17,7 @@ const DraggableRectangle = React.memo(
 
     const handleDraggableStop = React.useCallback(
       (_, { node, x, y }) => {
-        dispatch(updatePosition({ id: Number(node.dataset.id), x, y }));
+        dispatch(updateElementPosition({ id: node.dataset.id, x, y }));
       },
       [dispatch],
     );

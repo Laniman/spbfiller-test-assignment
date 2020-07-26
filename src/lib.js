@@ -24,3 +24,16 @@ export const generateColor = ({ excludeColors = [] } = {}) => {
 
   return randomColor();
 };
+
+export const createArray = (length, fn = () => undefined) => {
+  const arr = [];
+
+  for (let i = 0; i < length; i++) {
+    arr.push(fn(i));
+  }
+
+  return arr;
+};
+
+export const sleep = (timeout) =>
+  new Promise((resolve) => setTimeout(() => resolve(), timeout));

@@ -2,7 +2,7 @@
   "name": "spbfiller-test-assignment",
   "version": "0.0.0",
   "private": true,
-  "homepage": "/spbfiller-test-assignment",
+  "homepage": ".",
   "dependencies": {
     "@reduxjs/toolkit": "^1.1.0",
     "@testing-library/jest-dom": "^4.2.4",
@@ -18,6 +18,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "serve": "npx http-server ./build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

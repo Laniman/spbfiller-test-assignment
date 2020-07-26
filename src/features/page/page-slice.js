@@ -1,10 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { initialPageHeight, initialPageWidth } from '../../app/config';
 
 export const pageSlice = createSlice({
   name: 'page',
   initialState: {
-    width: 400,
-    height: 400,
+    width: initialPageWidth,
+    height: initialPageHeight,
   },
 });
 

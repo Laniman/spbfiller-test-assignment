@@ -1,17 +1,18 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { pageSlice } from '../features/page';
 import { elementsSlice, generateElement } from '../features/elements';
+import { createArray } from '../lib';
+import {
+  initialPageWidth,
+  initialPageHeight,
+  initialElementsCount,
+} from './config';
 
-const initialPageState = {
-  width: 400,
-  height: 400,
-};
-
-const initialElementsState = Array.from({ length: 100 }, () =>
+const generatedElements = createArray(initialElementsCount, () =>
   generateElement({
     pageSize: {
-      width: initialPageState.width,
-      height: initialPageState.height,
+      width: initialPageWidth,
+      height: initialPageHeight,
     },
   }),
 );
@@ -22,7 +23,6 @@ export const store = configureStore({
     elements: elementsSlice.reducer,
   },
   preloadedState: {
-    page: initialPageState,
-    elements: initialElementsState,
+    elements: generatedElements,
   },
 });

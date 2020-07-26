@@ -1,5 +1,28 @@
+[![Application example](docs/app-example.gif)](https://laniman.github.io/spbfiller-test-assignment/)
+
 # Тестовое задание SPBFiller
 
-## [DEMO](https://laniman.github.io/spbfiller-test-assignment/)
+> [Live Demo](https://laniman.github.io/spbfiller-test-assignment/)
 
-- [Текст задания](docs/test-assignment.md)
+> [Текст задания](docs/test-assignment.md)
+
+## Development
+
+Checkout this repository locally, then:
+
+```shell
+$ yarn install
+$ yarn start
+```
+
+### Creating a Production Build
+
+```shell
+$ yarn build
+```
+
+### Run local http server
+
+```shell
+$ yarn serve
+```
