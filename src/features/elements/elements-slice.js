@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createSelector } from '@reduxjs/toolkit';
 import { createCollection } from '../../lib';
 import { generateElement } from './generate-element';
 
@@ -22,7 +22,7 @@ export const elementsSlice = createSlice({
 
 export const { updateElementPosition, renew } = elementsSlice.actions;
 
-export const renewElements = (count) => async (dispatch, getState) => {
+export const renewElements = (count) => (dispatch, getState) => {
   const { page } = getState();
 
   const generated = createCollection(count, () =>
@@ -38,3 +38,12 @@ export const renewElements = (count) => async (dispatch, getState) => {
 };
 
 export const selectElements = (state) => state.elements;
+
+export const elementsSelector = createSelector(selectElements, (elements) =>
+  Object.values(elements),
+);
+
+export const totalElementsSelector = createSelector(
+  elementsSelector,
+  (elements) => elements.length,
+);

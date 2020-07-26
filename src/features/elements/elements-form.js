@@ -1,11 +1,11 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectElements, renewElements } from './elements-slice';
+import { totalElementsSelector, renewElements } from './elements-slice';
 import styles from './elements.module.css';
 
 export const ElementsForm = () => {
   const dispatch = useDispatch();
-  const elements = useSelector(selectElements);
+  const totalElements = useSelector(totalElementsSelector);
 
   return (
     <form
@@ -20,7 +20,7 @@ export const ElementsForm = () => {
       }}
     >
       <input
-        defaultValue={Object.keys(elements).length}
+        defaultValue={totalElements}
         name="count"
         type="text"
         inputMode="numeric"

@@ -1,12 +1,12 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { selectPage } from './page-slice';
-import styles from './page.module.css';
 import { pageBackgroundColor } from '../../app/config';
+import { pageSelector } from './page-slice';
+import styles from './page.module.css';
 
-export function Page(props) {
+export const Page = (props) => {
   const { children } = props;
-  const page = useSelector(selectPage);
+  const page = useSelector(pageSelector);
 
   return (
     <div
@@ -20,4 +20,4 @@ export function Page(props) {
       {children}
     </div>
   );
-}
+};

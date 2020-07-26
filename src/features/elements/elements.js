@@ -1,12 +1,12 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { selectElements } from './elements-slice';
+import { elementsSelector } from './elements-slice';
 import { DraggableRectangle } from './draggable-rectangle';
 
 export const Elements = () => {
-  const elements = useSelector(selectElements);
+  const elements = useSelector(elementsSelector);
 
-  return Object.values(elements).map((element) => {
+  return elements.map((element) => {
     return (
       <DraggableRectangle
         key={element.id}

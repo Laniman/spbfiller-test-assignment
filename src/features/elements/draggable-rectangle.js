@@ -5,21 +5,27 @@ import { updateElementPosition } from './elements-slice';
 import { Rectangle } from './rectangle';
 import styles from './elements.module.css';
 
-export const DraggableRectangle = React.memo(
-  (props) => {
-    const { id, width, height, backgroundColor, x, y } = props;
+export const DraggableRectangle = React.memo((props) => {
+  const { id, width, height, backgroundColor, x, y } = props;
 
-    const nodeRef = React.useRef(null);
-    const dispatch = useDispatch();
+  const nodeRef = React.useRef(null);
+  const dispatch = useDispatch();
 
-    const handleDraggableStop = React.useCallback(
-      (_, { node, x, y }) => {
-        dispatch(updateElementPosition({ id: node.dataset.id, x, y }));
-      },
-      [dispatch],
-    );
+  const handleDraggableStop = React.useCallback(
+    (_, { node, x, y }) => {
+      dispatch(updateElementPosition({ id: node.dataset.id, x, y }));
+    },
+    [dispatch],
+  );
 
-    const draggableChild = (
+  return (
+    <Draggable
+      enableUserSelectHack={false}
+      bounds={'parent'}
+      defaultPosition={{ x, y }}
+      nodeRef={nodeRef}
+      onStop={handleDraggableStop}
+    >
       <div className={styles['draggable-rectangle']} ref={nodeRef} data-id={id}>
         <Rectangle
           width={width}
@@ -27,19 +33,6 @@ export const DraggableRectangle = React.memo(
           backgroundColor={backgroundColor}
         />
       </div>
-    );
-
-    return (
-      <Draggable
-        enableUserSelectHack={false}
-        bounds={'parent'}
-        defaultPosition={{ x, y }}
-        nodeRef={nodeRef}
-        onStop={handleDraggableStop}
-      >
-        {draggableChild}
-      </Draggable>
-    );
-  },
-  (prevProps, nextProps) => prevProps.id === nextProps.id,
-);
+    </Draggable>
+  );
+});
