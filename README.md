@@ -2,6 +2,8 @@
 
 # Тестовое задание SPBFiller
 
+![Deploy](https://img.shields.io/github/workflow/status/Laniman/spbfiller-test-assignment/Deploy)
+
 > [Live Demo](https://laniman.github.io/spbfiller-test-assignment/)
 
 > [Текст задания](docs/test-assignment.md)
