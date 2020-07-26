@@ -20,7 +20,7 @@ export const ElementsForm = () => {
       }}
     >
       <input
-        defaultValue={elements.length}
+        defaultValue={Object.keys(elements).length}
         name="count"
         type="text"
         inputMode="numeric"

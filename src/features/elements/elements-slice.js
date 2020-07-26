@@ -1,16 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { createArray } from '../../lib';
+import { createCollection } from '../../lib';
 import { generateElement } from './generate-element';
 
 export const elementsSlice = createSlice({
   name: 'elements',
-  initialState: [],
+  initialState: {},
   reducers: {
     renew: (state, { payload }) => {
       return payload;
     },
     updateElementPosition: (state, { payload }) => {
-      const item = state.find((item) => item.id === payload.id);
+      const item = state[payload.id];
 
       if (item) {
         item.x = payload.x;
@@ -25,7 +25,7 @@ export const { updateElementPosition, renew } = elementsSlice.actions;
 export const renewElements = (count) => async (dispatch, getState) => {
   const { page } = getState();
 
-  const generated = createArray(count, () =>
+  const generated = createCollection(count, () =>
     generateElement({
       pageSize: {
         width: page.width,

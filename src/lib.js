@@ -1,19 +1,12 @@
-export const random = (min, max) => {
-  return Math.floor(Math.random() * (max - min + 1) + min);
-};
+export const random = (min, max) =>
+  Math.floor(Math.random() * (max - min + 1) + min);
 
-const pad = (num, size) => {
-  const s = '000000000' + num;
-  return s.substr(s.length - size);
-};
+export const randomHexColor = () =>
+  '#000000'.replace(/0/g, () => random(0, 15).toString(16));
 
 export const generateColor = ({ excludeColors = [] } = {}) => {
   const randomColor = () => {
-    const r = pad(random(0, 255).toString(16), 2);
-    const g = pad(random(0, 255).toString(16), 2);
-    const b = pad(random(0, 255).toString(16), 2);
-
-    const generatedColor = `#${r}${g}${b}`;
+    const generatedColor = randomHexColor();
 
     const isInvalidColor = excludeColors.includes(
       (color) => color === generatedColor,
@@ -25,14 +18,14 @@ export const generateColor = ({ excludeColors = [] } = {}) => {
   return randomColor();
 };
 
-export const createArray = (length, fn = () => undefined) => {
-  const arr = [];
+export const createCollection = (length, fn = () => undefined) => {
+  const result = {};
 
   for (let i = 0; i < length; i++) {
-    arr.push(fn(i));
+    result[i] = fn(i);
   }
 
-  return arr;
+  return result;
 };
 
 export const sleep = (timeout) =>

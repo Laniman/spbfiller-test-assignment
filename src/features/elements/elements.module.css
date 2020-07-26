@@ -1,5 +1,10 @@
 .draggable-rectangle {
   position: absolute;
+  cursor: grab;
+}
+
+.draggable-rectangle:active {
+  cursor: grabbing;
 }
 
 .form {

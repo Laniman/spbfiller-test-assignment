@@ -1,14 +1,17 @@
 import { configureStore } from '@reduxjs/toolkit';
+import { createLogger } from 'redux-logger';
 import { pageSlice } from '../features/page';
 import { elementsSlice, generateElement } from '../features/elements';
-import { createArray } from '../lib';
+import { createCollection } from '../lib';
 import {
   initialPageWidth,
   initialPageHeight,
   initialElementsCount,
 } from './config';
 
-const generatedElements = createArray(initialElementsCount, () =>
+const logger = createLogger();
+
+const generatedElements = createCollection(initialElementsCount, () =>
   generateElement({
     pageSize: {
       width: initialPageWidth,
@@ -25,4 +28,5 @@ export const store = configureStore({
   preloadedState: {
     elements: generatedElements,
   },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
 });
