@@ -22,7 +22,9 @@ export const createCollection = (length, fn = () => undefined) => {
   const result = {};
 
   for (let i = 0; i < length; i++) {
-    result[i] = fn(i);
+    const fnResult = fn(i);
+    const { id = i } = fnResult;
+    result[id] = fnResult;
   }
 
   return result;
