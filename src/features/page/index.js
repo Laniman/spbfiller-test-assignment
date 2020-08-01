@@ -1,2 +1,2 @@
 export { Page } from './page';
-export { pageSlice, selectPage } from './page-slice';
+export { pageSlice, pageSelector } from './page-slice';

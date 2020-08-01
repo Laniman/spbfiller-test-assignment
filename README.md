@@ -11,9 +11,9 @@
 ## Information
 
 - Data about the position of the changed block is sent to the Redux Store at the end of the drag (`handleDraggableStop`)
-- All blocks are rendered on the screen. There are performance issues when working with a large (10K+) number of blocks
+- All blocks are rendered on the screen. There are performance issues when working with a large (50K+) number of blocks
 - App config in `src/app/config.js`
-- Draggable lib - [`react-draggable`](https://github.com/STRML/react-draggable)
+- Draggable lib - [`react-use-gesture`](https://github.com/react-spring/react-use-gesture)
 - Boilerplate (Redux Toolkit) - [`cra-template-redux`](https://github.com/reduxjs/cra-template-redux)
 - [`redux-logger`](https://github.com/LogRocket/redux-logger) is available in the production build to monitor every action
 

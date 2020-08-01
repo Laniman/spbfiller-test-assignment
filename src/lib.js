@@ -1,3 +1,7 @@
+export const px = (value) => `${value}px`;
+
+export const float = (value) => Number.parseFloat(value);
+
 export const random = (min, max) =>
   Math.floor(Math.random() * (max - min + 1) + min);
 

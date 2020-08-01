@@ -1,6 +1,7 @@
 .draggable-rectangle {
   position: absolute;
   cursor: grab;
+  touch-action: none;
 }
 
 .draggable-rectangle:active {
